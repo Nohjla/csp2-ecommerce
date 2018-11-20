@@ -7,7 +7,7 @@
  -->
 				<div class="row text">
 				<div class ='list-group w-100 text-center'>
-			      <?php require_once 'app/controllers/connection.php';
+			      <?php require_once '../controllers/connection.php';
 			      	$sql = "SELECT * FROM categories";
 			      	$result = mysqli_query($conn, $sql);	
 
@@ -54,7 +54,7 @@
 				</div>
 
 				 <div class="row" id="products">
-		       <?php require "app/controllers/connection.php";
+		       <?php require "../controllers/connection.php";
 			       	$sql = "SELECT * FROM items";
 			       	$result = mysqli_query($conn,$sql);
 			       	if (mysqli_num_rows($result)>0) {
@@ -65,7 +65,7 @@
 			                	<div class='card h-100'>
 			                  <img src='$row[img_path]'>
 			                  <div class='card-body'>
-			                  <h4 class='card-title font-weight-bold'>$row[name]</h4>
+			                  <h4 class='card-title font-weight-bold'><a href='product.php?id=$row[id]'>$row[name]</a></h4>
 			                  <h5>$row[price]</h5>
 			                  <p class='card-text'>
 			                  $row[description]</p>
@@ -94,7 +94,7 @@
 		// alert(categoryID);
 		document.getElementById('nowCategories').innerHTML = "Category" + " " + categoryID;
 		$.ajax({
-				url:"app/controllers/show_items.php",
+				url:"../controllers/show_items.php",
 				method:"POST",
 				data:{
 					categoryID:categoryID
